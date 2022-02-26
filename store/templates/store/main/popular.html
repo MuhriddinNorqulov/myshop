@@ -1,0 +1,25 @@
+{% load static %}
+
+<section class="products-section section-shadow bg-white">
+	<div class="container-fluid">
+    	<div class="row">
+        	<div class="col-12">
+            	<div class="title">
+                	<h4>POPULAR PRODUCTS</h4>
+                </div>
+            </div>
+
+        </div>
+    	<div class="row">
+        	<div class="col-lg-12">
+            	<div class="carousel_slide6 products-style-2 nav-style-2 owl-carousel owl-theme" data-margin="30" data-dots="false" data-autoplay="false" data-nav="true" data-loop="false">
+                	{% for product in products %}
+                        {% include 'base/product.html' %}
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

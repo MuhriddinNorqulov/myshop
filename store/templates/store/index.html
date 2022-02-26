@@ -1,0 +1,72 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block head %}
+    <style>
+        .owl-item{
+            width: 100px;!important;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+    <!-- Start Slider Section -->
+    {% include 'store/main/header.html' %}
+    <!-- End Slider Section -->
+
+
+
+<!-- Start Deals Section -->
+    {% include 'store/main/deals.html' %}
+<!-- End Deals Section -->
+
+
+
+<!-- Start Popular Products Section -->
+    {% include 'store/main/popular.html' %}
+<!-- End Popular Products Section -->
+
+<!-- Start Testimonial Section -->
+    {% include 'store/main/testimonial.html' %}
+<!-- End Testimonial Section -->
+
+<!-- Start Best Saller Section -->
+    {% include 'store/main/best_saller.html' %}
+<!-- End Best Saller Section -->
+
+
+
+<!-- Start New Collection Section -->
+    {% include 'store/main/new_collection.html' %}
+<!-- End New Collection Section -->
+
+<!-- Start Instagram Section -->
+    {% include 'store/main/instagram.html' %}
+<!-- End Instagram Section -->
+
+<!-- Start Newsletter Section -->
+{#<section class="pt_medium pb_medium navy-dark-bg m-0 px-0">#}
+{#    <div class="container">#}
+{#        <div class="row align-items-center">#}
+{#            <div class="col-md-6">#}
+{#                <div class="text-white mb-3 mb-md-0">#}
+{#                    <h5 class="mb-2">Follow Our Updates!</h5>#}
+{#                    <p>If you want to get an email from us every time we have a new special offer, then sign up here!</p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-md-6">#}
+{#                <form class="newsletter-form">#}
+{#                    <div class="outline-input">#}
+{#                        <input type="text" required="" placeholder="Enter Email Address">#}
+{#                    </div>#}
+{#                    <button type="submit" title="Subscribe" class="btn btn-submit border-0 btn-primary" name="submit" value="Submit">submit</button>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</section>#}
+<!-- End Newsletter Section -->
+
+
+
+{% endblock content %}

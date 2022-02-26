@@ -1,0 +1,212 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block head %}
+
+    <style>
+        {#body.theme-3{#}
+        {#    background-color: #fff;#}
+
+        .btn-link::after{
+            display: none;
+        }
+        .ci-caption ul li{
+            text-align: center;
+
+        }
+
+    </style>
+{% endblock head %}
+{% block content %}
+    <section class="breadcrumbs-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="page_title text-center">
+                        <ul class="breadcrumb justify-content-start">
+                            <li><a href="{% url 'store:store' %}">home</a></li>
+                            <li><a href="#">shop</a></li>
+                            <li><span>Registration</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- End Header Section -->
+
+
+
+<!-- Start My Account Section -->
+{% comment %}
+    <section class="pt_large pb_large">
+	    <div class="container">
+    	<div class="row">
+            <div class="col-md-2 col-md-2"></div>
+        	<div class="col-lg-8 col-md-8 mb-4 col-sm-12 mb-md-0">
+            	<div class="title">
+                	<h4>Registration</h4>
+                </div>
+            	<form method="post" class="login_form "> {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            {% for msg in messages %}
+                               <div class="alert alert-{{ msg.tags }} alert-dismissible fade show" role="alert">
+                                  <strong>!</strong> {{ msg }}.
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                               </div>
+                            {% endfor %}
+
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Username</label>
+                                {{ form.username }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                {{ form.email }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>First name</label>
+                                {{ form.first_name }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Last name</label>
+                                {{ form.last_name }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group password-form">
+                                <label>Password</label>
+                                {{ form.password1 }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group password-form">
+                                <label>Confirm password</label>
+                                {{ form.password2 }}
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-primary2">Register</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    </section>
+{% endcomment %}
+
+     <section class="checkout-inner-page pt_large pb_large">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-12">
+                    <div class="checkout-process">
+                        <div id="accordion" class="checkout-parts accordion">
+                            <form role="form" method="post">{% csrf_token %}
+
+                                <div class="card">
+                                    <div class="card-header form-wizard-step">
+                                        <h5>
+                                            <a class="btn btn-link"><span>/</span>Registration</a>
+{#                                            <span class="btn btn-link collapsed">Registration</span>#}
+                                        </h5>
+                                    </div>
+{#                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">#}
+                                        <div class="card-body">
+                                            <div class="check-tab">
+                                                <div class="checkout-form">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            {% for msg in messages %}
+                                                               <div class="alert alert-{{ msg.tags }} alert-dismissible fade show" role="alert">
+                                                                  <strong>!</strong> {{ msg }}.
+                                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                  </button>
+                                                               </div>
+                                                            {% endfor %}
+                                                        </div>
+
+                                                        <div class="form-group col-md-6">
+                                                            <label>Username <span class="required_sign">*</span></label>
+{#                                                            <input class="form-control required" placeholder="Enter Your email" value="" type="email">#}
+                                                            {{ form.username }}
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label>Email <span class="required_sign">*</span></label>
+{#                                                            <input class="form-control required" placeholder="Enter Your Phone Number" value="" type="text">#}
+                                                            {{ form.email }}
+                                                        </div>
+                                                       <div class="form-group password-form col-md-6">
+                                                            <label>Password <span class="required_sign">*</span></label>
+{#                                                            <input class="form-control required" placeholder="Enter Your Phone Number" value="" type="text">#}
+                                                           {{ form.password1 }}
+                                                        </div>
+                                                       <div class="form-group password-form col-md-6">
+                                                            <label>Confirm password <span class="required_sign">*</span></label>
+{#                                                            <input class="form-control required" placeholder="Enter Your Phone Number" value="" type="text">#}
+                                                           {{ form.password2 }}
+                                                        </div>
+
+                                                        <div class="form-group col-md-6">
+                                                            <div class="form-wizard-buttons text-md-lef mt-3">
+                                                                <button class="btn btn-primary btn-submit btn-next" type="submit">Signup</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <div class="cart-inner-box box-2 text-center">
+                        <div class="ci-title">
+                            <h6>Social networks</h6>
+                        </div>
+                        <div class="ci-caption">
+                            <ul>
+                                <li><a href="{% provider_login_url 'google' %}"><img src="{% static 'logo/google/web/1x/google1.png' %}" ></a></li>
+                                <li><a href="{% provider_login_url 'google' %}"><div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div></a></li>
+
+                                {% load socialaccount %}
+                                <li><a href="{% provider_login_url "facebook" method="oauth2" %}">Facebook OAuth2</a></li>
+
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- End My Account Section -->
+
+    <script src="{% static 'myjs/login_register.js' %}"></script>
+
+{% endblock %}

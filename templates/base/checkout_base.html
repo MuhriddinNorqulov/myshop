@@ -1,0 +1,80 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+ <!-- Start Breadcrumbs Section -->
+    <section class="breadcrumbs-section">
+        <div class="container">
+            <div class="row justify-content-start">
+                <div class="col-md-12">
+                    <div class="page_title text-left">
+
+                        <ul class="breadcrumb justify-content-start">
+                            <li><a href="{% url 'store:store' %}">Store</a></li>
+                            <li><a href="#">shop</a></li>
+                            <li><span>Checkout</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Header Section -->
+
+    <!-- Start Checkout Section -->
+    <section class="checkout-inner-page pt_large pb_large">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-12">
+                    <div class="checkout-process">
+
+                        <div id="accordion" class="checkout-parts accordion">
+
+                                    {% for msg in messages %}
+                                       <div class="alert alert-{{ msg.tags }} alert-dismissible fade show" role="alert">
+                                          <strong>!</strong> {{ msg }}.
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                       </div>
+                                    {% endfor %}
+
+                                    {% block checkout_content %}
+
+                                    {% endblock checkout_content %}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <div class="cart-inner-box box-2 text-center">
+                        <div class="ci-title">
+                            <h6>Cart Total</h6>
+                        </div>
+                        <div class="ci-caption">
+                            <ul>
+                                <li>Subtotal <span>${{ cart.get_total_price }}</span></li>
+                                <li>Shipping <span>Free</span></li>
+                                <li>Coupon <span>-${{ cart.get_discount }}</span></li>
+                            </ul>
+                        </div>
+                        <div class="ci-btn">
+                            <ul>
+                                <li>Total Order<span>${{ cart.get_total_price_after_discount }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Checkout Section -->
+
+
+
+
+{% endblock %}
+
+
+

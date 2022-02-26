@@ -1,0 +1,88 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% block head %}
+    <style>
+        body.theme-3{
+            background-color: #fff;
+        }
+        .login_form{
+            box-shadow: -3px 5px 35px 10px #ddd;
+        }
+    </style>
+{% endblock head %}
+{% block content %}
+    <section class="breadcrumbs-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="page_title text-center">
+                        <ul class="breadcrumb justify-content-start">
+                            <li><a href="{% url 'store:store' %}">home</a></li>
+                            <li><a href="#">shop</a></li>
+                            <li><span>My Account</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- End Header Section -->
+
+
+
+<!-- Start My Account Section -->
+    <section class="pt_large pb_large">
+	    <div class="container">
+    	<div class="row">
+            <div class="col-md-3 col-md-2"></div>
+        	<div class="col-lg-6 col-md-8 mb-4 col-sm-12 mb-md-0">
+            	<div class="title">
+                	<h4>Login</h4>
+                </div>
+            	<form method="post" class="login_form "> {% csrf_token %}
+                    {% for msg in messages %}
+                       <div class="alert alert-{{ msg.tags }} alert-dismissible fade show" role="alert">
+                          <strong>!</strong> {{ msg }}.
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                       </div>
+                    {% endfor %}
+                    <div class="form-group">
+                        <label>Username or email <span class="required">*</span></label>
+                        {{ form.username }}
+{#                        <input type="text" required="" class="form-control" name="username" value="">#}
+                    </div>
+                    <div class="form-group">
+                        <label>Password <span class="required">*</span></label>
+                        {{ form.password }}
+{#                        <input class="form-control" required="" type="password" name="password">#}
+                    </div>
+                    <div class="form-group form-check p-0">
+{#                        <label>Remember me#}
+{#                            <input class="defult-check" type="checkbox" checked="checked">#}
+{#                            <span class="checkmark"></span>#}
+{#                        </label>#}
+                        <a href="#" class="forgot-password float-right">Forgot Password ?</a>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" value="Log in">Log in</button>
+                    </div>
+                    <div class="form-group">
+                        <a href="{% provider_login_url "google" %}" class="btn" style="border: 1px red solid"><img src="{% static 'logo/google-plus.png' %}" width="35px" alt="">sigin with google</a>
+                    </div>
+                    <div class="form-group">
+{#                    <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="ecommerce_myshop_bot" data-size="large" data-auth-url="https://maxsoft.uz" data-request-access="write"></script>#}
+{#                        <a href="{% provider_login_url 'telegram' %}">telegramtest</a>#}
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    </section>
+<!-- End My Account Section -->
+
+{% endblock %}

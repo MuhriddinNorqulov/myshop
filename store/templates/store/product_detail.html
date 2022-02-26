@@ -1,0 +1,210 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!-- Start Breadcrumbs Section -->
+<section class="breadcrumbs-section background_bg">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+                <div class="page_title">
+
+                    <ul class="breadcrumb justify-content-left">
+                    	<li><a href="#">home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><span>Product Detail</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Header Section -->
+
+<!-- Start Product Detail Section -->
+<section id="product-detail" data-product="{{ product.get_json_info }}" class="products-detail-section pt_large">
+	<div class="container">
+    	<div class="row">
+        <div class="col-md-5">
+             <div class="product-image">
+                <img class="product_img" src='{{ product.img.url }}' data-zoom-image="{{ product.img.url }}"/>
+             </div>
+{#             <div id="pr_item_gallery" class="product_gallery_item owl-thumbs-slider owl-carousel owl-theme">#}
+{#                <div class="item">#}
+{#                    <a href="#" class="active" data-image="{{ product.img.url }}" data-zoom-image="{{ product.img.url }}">#}
+{#                        <img src="{{ product.img.url }}" />#}
+{#                    </a>#}
+{#                </div>#}
+{#                <div class="item">#}
+{#                    <a href="#" data-image="{{ product.img.url }}" data-zoom-image="{{ product.img.url }}">#}
+{#                        <img src="{{ product.img.url }}" />#}
+{#                    </a>#}
+{#                </div>#}
+{#            </div>#}
+        </div>
+        <div class="col-md-7">
+            <div class="quickview-product-detail">
+                <h4 class="box-title">{{ product.name }}</h4>
+                <h3 class="box-price">$ {{ product.price }}</h3>
+                <p class="box-text">{{ product.description }}.</p>
+                <p class="stock">Availability: <span>In Stock</span></p>
+                <form data-product="{{ product.id }}" data-action="add" class="update-cart" method="post"> {% csrf_token %}
+                    <div class="quantity-box">
+                    <p>Quantity:</p>
+                    <div class="input-group">
+                    	<input type="button" value="-" class="minus">
+
+                        <input class="quantity-number qty product-count" type="number" value="1" min="1">
+
+                        <input type="button" value="+" class="plus">
+                    </div>
+                    <div class="quickview-cart-btn">
+                        <button class="btn btn-primary"><img src="{% static 'images/cart_icon.png' %}" alt="cart-icon-1"> Add To Cart</button>
+                    </div>
+                </div>
+                </form>
+                <div class="box-social-like d-sm-flex justify-content-between">
+                    <ul class="hover-icon box-like">
+                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        <li><a href="#"><i class="fa fa-refresh"></i></a></li>
+                    </ul>
+                    <ul class="hover-icon box-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!-- End Product Detail Section -->
+
+<!-- Start Product Tabs Section -->
+<section class="products-detail-tabs">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+            	<div class="products-tabs">
+                	<ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                        	<a class="nav-link active" id="ai-tab" data-toggle="tab" href="#ai" role="tab" aria-controls="ai" aria-selected="false">Spesficiton</a>
+                        </li>
+                        <li class="nav-item">
+                        	<a class="nav-link" id="discription-tab" data-toggle="tab" href="#discription" role="tab" aria-controls="discription" aria-selected="true">Discription</a>
+                        </li>
+
+                        <li class="nav-item">
+                        	<a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">REVIEWS (2)</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane fade tab-1 show active" id="ai" role="tabpanel" aria-labelledby="ai-tab">
+                        	<div class="tab-title">
+                            	<h6>Additional information</h6>
+                            </div>
+                            <div class="tab-caption">
+                            	<div class="table-responsive">
+                            		<table class="table">
+                                    	<tbody>
+                                            <tr>
+                                                <td colspan="1">Brand</td>
+                                                <td>FairPlay</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">Season</td>
+                                                <td>Spring / Summer</td>
+                                            </tr>
+                                            <tr>
+                                                <td  colspan="1">Color</td>
+                                                <td>Black</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">Fit</td>
+                                                <td>Comfort</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">Size</td>
+                                                <td>S</td>
+                                            </tr>
+                                    	</tbody>
+                                	</table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade tab-2" id="discription" role="tabpanel" aria-labelledby="discription-tab">
+                        	<div class="tab-title">
+                            	<h6>Discription</h6>
+                            </div>
+                            <div class="tab-caption">
+                            	<p>{{ product.description }}</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade tab-3" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                        	<div class="tab-title">
+                            	<h6>Costomer Reviews</h6>
+                            </div>
+                            <div class="tab-caption">
+                            	<div class="costomer-reviews">
+                                	<div class="costomer-reviews-box">
+                                    	<div class="reviews-img">
+                                        	<img src="{% static 'images/costomer-img.jpg' %}" height="50px" alt="costomer-img">
+                                        </div>
+                                        <div class="reviews-text">
+                                        	<p class="reviewer-name">admin</p>
+                                            <span class="reviews-date">September 13, 2017</span>
+                                            <p class="reviewer-text">24/7 helpdesk is also available. I Love it!</p>
+                                        </div>
+                                    </div>
+                                    <div class="costomer-reviews-box">
+                                    	<div class="reviews-img">
+                                        	<img src="image/costomer-img.jpg" alt="costomer-img">
+                                        </div>
+                                        <div class="reviews-text">
+                                        	<p class="reviewer-name">admin</p>
+                                            <span class="reviews-date">September 13, 2017</span>
+                                            <p class="reviewer-text">24/7 helpdesk is also available. I Love it!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-caption">
+                            	<div class="add-review">
+                                	<div class="tab-title">
+                                        <h6>Add a review</h6>
+                                    </div>
+                                    <form class="add-review-form">
+                                    	<div class="input-1">
+                                    		<input required class="form-control" placeholder="Enter Your Name" value="" type="text">
+                                        </div>
+                                        <div class="input-2">
+                                    		<input required class="form-control" placeholder="Enter Your Email" value="" type="email">
+                                        </div>
+                                        <div class="input-3">
+                                    		<textarea required rows="6" class="form-control" placeholder="Enter Your Review"></textarea>
+                                        </div>
+                                        <div class="input-btn">
+                                        	<button type="submit" class="btn btn-secondary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Product Tabs Section -->
+
+    <script src="{% static 'myjs/product_detail.js' %}"></script>
+
+
+
+{% endblock %}

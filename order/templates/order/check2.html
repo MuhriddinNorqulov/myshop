@@ -1,0 +1,139 @@
+<div class="card">
+    <div class="card-header form-wizard-step">
+        <h5>
+            <a class="btn btn-link collapsed" data-toggle="collapse" href="#collapsethree" aria-expanded="true"><span>02</span>shipping information</a>
+        </h5>
+    </div>
+    <div id="collapsethree" class="collapse show" aria-labelledby="headingthree" data-parent="#accordion">
+        <div class="card-body">
+            <div class="check-tab">
+                <div class="checkout-form">
+                    <form method="post" action="{% url 'order:shipping-check' %}">{% csrf_token %}
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Name<span class="required_sign">*</span></label>
+                                {{ shipping_form.name }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>phone number <span class="required_sign">*</span></label>
+                                {{ shipping_form.phone_number }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>address <span class="required_sign">*</span></label>
+                                {{ shipping_form.address }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>state <span class="required_sign">*</span></label>
+                                {{ shipping_form.state }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>city <span class="required_sign">*</span></label>
+                                {{ shipping_form.city }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>zip code <span class="required_sign">*</span></label>
+                                {{ shipping_form.zipcode }}
+                            </div>
+                            <div class="form-group col-md-6 mt-4 text-center">
+                                <button class="btn btn-primary">Continue</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header form-wizard-step">
+        <h5>
+            <a class="btn btn-link collapsed" data-toggle="collapse" href="#collapsefour" aria-expanded="true" aria-controls="collapsefour"><span>03</span>payment method</a>
+        </h5>
+    </div>
+    <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordion">
+        <div class="card-body">
+            <div class="check-tab">
+                <div class="checkout-form">
+                    <div class="chek-form">
+                        <div class="form-check">
+                            <input class="form-check-input" required type="radio" name="payment_option" id="exampleradios3" value="option3" checked>
+                            <label class="form-check-label" for="exampleradios3">direct bank transfer</label>
+                            <p data-method="option3" class="payment-text">there are many variations of passages of lorem ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
+                                believable. </p>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment_option" id="exampleradios4" value="option4">
+                            <label class="form-check-label" for="exampleradios4">check payment</label>
+                            <p data-method="option4" class="payment-text">please send your cheque to store name, store street, store town, store state / county, store postcode.</p>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment_option" id="exampleradios5" value="option5">
+                            <label class="form-check-label" for="exampleradios5">paypal</label>
+                            <p data-method="option5" class="payment-text">pay via paypal; you can pay with your credit card if you don't have a paypal account.</p>
+                        </div>
+                    </div>
+                    <div class="form-wizard-buttons text-md-right">
+                        <button class="btn btn-primary btn-next" type="button">continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card ord_tab">
+    <div class="card-header form-wizard-step">
+        <h5>
+            <a class="btn btn-link collapsed" data-toggle="collapse" href="#collapsefive" aria-expanded="true" aria-controls="collapsefive"><span>04</span>order review</a>
+        </h5>
+    </div>
+    <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordion">
+        <div class="card-body">
+            <div class="check-tab">
+                <div class="order-table">
+                    <div class="order-review-table table-responsive">
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr class="row-1">
+                                    <th class="row-title text-center">product name</th>
+                                    <th class="row-title">price</th>
+                                    <th class="row-title">quantity</th>
+                                    <th class="row-title">subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in cart %}
+                                    <tr class="row-2">
+                                        {% with product=item.product %}
+                                        <td class="product-name">{{ product.name }}</td>
+                                        <td class="product-price">$ {{ product.price }}</td>
+                                        {% endwith %}
+                                        <td class="product-quantity">{{ item.quantity }}</td>
+                                        <td class="product-subtotal">$ {{ item.total_price }}</td>
+                                    </tr>
+                                {% endfor %}
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr class="row-4">
+                                    <td class="text-left" colspan="3">cart subtotal</td>
+                                    <td class="pr_subtotal">${{ cart.get_total_price }}</td>
+                                </tr>
+                                <tr class="row-5">
+                                    <td class="text-left" colspan="3">promotional code</td>
+                                    <td class="pr_subtotal">-${{ cart.get_discount | floatformat:2 }}</td>
+                                </tr>
+                                <tr class="row-6">
+                                    <td class="text-left" colspan="3">order total</td>
+                                    <td class="product-subtotal">${{ cart.get_total_price_after_discount | floatformat:2 }}</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

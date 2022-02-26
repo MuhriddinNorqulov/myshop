@@ -1,0 +1,85 @@
+{% load static %}
+
+<!-- Start Slider Section -->
+<section class="slider slider-type-2 p-0 mx-15">
+	<div class="container-fluid">
+    	<div class="row">
+        	<div class="col-md-12 slider-width">
+            	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for i in slider %}
+                            <div class="carousel-item slider-area background_bg" style="background-image:url('{{ i.img.url }}')">
+                            <div class="banner_slide_content">
+                                <div class="slider-caption">
+                                    <h1 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">{{ i.title }}</h1>
+                                    <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">{{ i.text }}</p>
+                                    <a href="shop.html" class="btn btn-primary animation" data-animation="fadeInUp" data-animation-delay="1s">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleControls" data-slide-to="2"></li>
+                </ol>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Slider Section -->
+
+<!-- Start Service Section -->
+<section class="bg-white section-shadow">
+	<div class="container-fluid">
+    	<div class="row">
+            <div class="col-md-3 col-6 facility-box box-1">
+				<div class="facility-inner">
+                    <div class="fb-icon">
+                        <i class="fa fa-truck"></i>
+                    </div>
+                    <div class="fb-text">
+                        <h5>FREE DELIVERY</h5>
+                        <span>Worldwide</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 facility-box box-2">
+            	<div class="facility-inner">
+                    <div class="fb-icon">
+                        <i class="fa fa-headphones"></i>
+                    </div>
+                    <div class="fb-text">
+                        <h5>24/ 7 SUPPORT</h5>
+                        <span>Customer Support</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 facility-box box-3">
+            	<div class="facility-inner">
+                    <div class="fb-icon">
+                        <i class="fa fa-cc-mastercard"></i>
+                    </div>
+                    <div class="fb-text">
+                        <h5>PAYMENT</h5>
+                        <span>Secure System</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 facility-box box-4">
+            	<div class="facility-inner">
+                    <div class="fb-icon">
+                        <i class="fa fa-trophy"></i>
+                    </div>
+                    <div class="fb-text">
+                        <h5>TRUSTED</h5>
+                        <span>enuine Products</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Service Section -->

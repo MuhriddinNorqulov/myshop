@@ -1,0 +1,93 @@
+{% load static %}
+<section class="deals-section section-shadow bg-white">
+	<div class="container-fluid">
+    	<div class="row">
+        	<div class="col-12">
+            	<div class="title">
+                	<h4>Deals of the Day</h4>
+                </div>
+            </div>
+        </div>
+    	<div class="row">
+        	<div class="col-lg-12">
+            	<div class="carousel_slide6 products-style-2 nav-style-2 owl-carousel owl-theme" data-margin="30" data-dots="false" data-autoplay="false" data-nav="true" data-loop="false">
+                	{% for product in products %}
+                        {% include 'base/product.html' %}
+                    {% endfor %}
+                    {% for product in products %}
+                        {% include 'base/product.html' %}
+                    {% endfor %}
+
+                </div>
+            </div>
+{#            <div class="col-lg-3 col-md-4 col-sm-5">#}
+{#            	<div class="carousel_slide1 shop-hover-style-2 owl-carousel owl-theme mt-3 mt-sm-0" data-dots="false">#}
+{#                    <a href="#" class="offer-banner shop-hover">#}
+{#                        <img src="{% static 'images/img.png' %}" height="200px" alt="offer-banner">#}
+{#                        <div class="shop-hover-text">#}
+{#                            <div class="shop-hover-wrap">#}
+{#                                <h5>Bold Fashion</h5>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </a>#}
+{#                    <a href="#" class="offer-banner shop-hover">#}
+{#                        <img src="{% static 'images/img.jpg' %}" alt="offer-banner">#}
+{#                        <div class="shop-hover-text">#}
+{#                            <div class="shop-hover-wrap">#}
+{#                                <h5>Man Fashion</h5>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </a>#}
+{#                    <a href="#" class="offer-banner shop-hover">#}
+{#                        <img src="{% static 'm1.jpg' %}" alt="offer-banner">#}
+{#                        <div class="shop-hover-text">#}
+{#                            <div class="shop-hover-wrap">#}
+{#                                <h5>Ladies Fashion</h5>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </a>#}
+{#                </div>#}
+{#            </div>#}
+        </div>
+    </div>
+</section>
+
+
+<section class="offer-section  shop-hover-style-2 section-shadow bg-white">
+	<div class="container-fluid">
+    	<div class="row">
+        	<div class="col-md-4">
+            	<a href="#" class="offer-banner shop-hover">
+                    <img src="{% static 'images/img.png' %}" height="220px" alt="offer-banner">
+                    <div class="shop-hover-text">
+                        <div class="shop-hover-wrap">
+                            <h5>Children Fashion</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+            	<a href="#" class="offer-banner shop-hover">
+                    <img src="{% static 'images/img_1.png' %}" height="220px" alt="offer-banner">
+                    <div class="shop-hover-text">
+                        <div class="shop-hover-wrap">
+                            <h5>Bold Fashion</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+            	<a href="#" class="offer-banner shop-hover">
+                    <img src="{% static 'images/img_2.png' %}" height="220px" alt="offer-banner">
+                    <div class="shop-hover-text">
+                        <div class="shop-hover-wrap">
+                            <h5>Red Fashion</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Offer Banner Section -->
+

@@ -1,0 +1,71 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Start Breadcrumbs Section -->
+<section class="breadcrumbs-section background_bg">
+	<div class="container">
+    	<div class="row justify-content-start">
+        	<div class="col-md-12">
+                <div class="page_title text-left">
+
+                    <ul class="breadcrumb justify-content-start">
+                    	<li><a href="{% url 'store:store' %}">Store</a></li>
+                        <li><span>wishlist</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Header Section -->
+
+
+
+<!-- Start Cart Section -->
+<section class="cart-section pt_large">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+            	<div class="cart-table table-responsive">
+                	<table class="table table-bordered text-center">
+                    	<thead>
+                        	<tr class="row-1">
+                                <th class="row-title"><p></p></th>
+                            	<th class="row-title"><p>Item</p></th>
+                                <th class="row-title"><p>Product Name</p></th>
+                                <th class="row-title"><p>Price</p></th>
+                                <th class="row-title"><p>Stock</p></th>
+                                <th class="row-title"><p>Add To Cart</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in wishlist %}
+                                <tr class="row-2">
+                                    <td class="row-close close-2" data-title="product-remove"><span class="wishlist-update" data-action="remove" data-product="{{ item.id }}"><i class="ion-close-circled"></i></span></td>
+                                    <td class="row-img"><img src="{{ item.img.url }}" height="50px" alt="cart-img"></td>
+                                    <td class="product-name" data-title="Product"><a href="{% url 'store:product-detail' item.id %}">{{ item.name }}</a></td>
+                                    <td class="product-price" data-title="Price"><p>$ {{ item.price }}</p></td>
+                                    <td class="product-name" data-title="Stock"><p>{{ item.stock }}</p></td>
+                                    <form data-product="{{ item.id }}" data-action="add" class="update-cart">
+                                        <td class="product-price" data-title="Available">
+                                            <p>
+                                              <button class="none-btn"><span class="btn-primary">Add</span></button>
+                                            </p>
+                                        </td>
+                                    </form>
+                                </tr>
+                            {% endfor %}
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Cart Section -->
+
+{% endblock content %}

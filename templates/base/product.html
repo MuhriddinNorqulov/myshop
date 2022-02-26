@@ -1,0 +1,30 @@
+
+
+<div data-product="{{ product.get_json_info }}" class="item">
+    <div class="product-box common-cart-box">
+        <div class="product-img common-cart-img">
+            <img src="{{ product.img.url }}" height="150px" alt="product-img">
+            <div class="hover-option">
+                <form data-product="{{ product.id }}" data-action="add" class="update-cart">
+                    <ul class="hover-icon">
+                        <li><button><span><i class="fa fa-shopping-cart"></i></span></button></li>
+                        <li><span class="wishlist-update" data-product="{{ product.id }}" data-action="add"><i class="fa fa-heart"></i></span></li>
+                        <li data-product="{{ product.get_json_info }}" data-action="add" class="product-detail-eye"><span href="#test-popup3"  class="quickview-popup-link"><i class="fa fa-eye"></i></span></li>
+{#                        <li><span><i class="fa fa-refresh"></i></span></li>#}
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="product-info common-cart-info">
+            <a href="{% url 'store:product-detail' product.slug %}" class="cart-name">{{ product.name }}</a>
+            <div class="product-rate">
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star-half"></i>
+            </div>
+            <p class="cart-price">$ {{ product.price }}</p>
+        </div>
+    </div>
+</div>

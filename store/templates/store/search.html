@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Start Breadcrumbs Section -->
+<section class="breadcrumbs-section background_bg">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+            	<div class="page_title text-sm-left">
+                    <ul class="breadcrumb justify-content-start">
+                    	<li><a href="index.html">home</a></li>
+                        <li><a href="#">shop</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Header Section -->
+
+<!-- Start FAQ Section -->
+<section class="pt_large pb_large shop-inner-section">
+	<div class="container">
+    	<div class="row">
+            {% for product in posts %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    {% include 'base/product.html' %}
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <nav>
+                    <ul class="pagination justify-content-center pt-2">
+                        <li><a href="">{{ page.number }}</a></li>
+{#                        <li class="active"><a href="#">1</a></li>#}
+                        <li><a href="?page=2">2</a></li>
+                        <li><a href="?page=3">3</a></li>
+                        {% if page.has_next %}
+                        <li><a href="?page={{ page.next_page_number }}" aria-label="Next"><i class="fa fa-angle-right"></i></a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End FAQ Section -->
+
+{% endblock %}

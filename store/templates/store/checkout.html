@@ -1,0 +1,11 @@
+{% extends 'base/checkout_base.html' %}
+{% block checkout_content %}
+
+{% if not customer_check %}
+    {% include 'order/check1.html' %}
+{% else %}
+    {% include 'order/check2.html' %}
+{% endif %}
+
+{% endblock %}
+
